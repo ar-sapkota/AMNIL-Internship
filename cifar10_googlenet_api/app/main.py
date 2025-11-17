@@ -3,12 +3,22 @@ from fastapi import FastAPI, File, UploadFile
 from app.utils import read_image
 from app.predict import predict
 from app.schemas import PredictionResponse
-from app.models import GoogleNet
+from app.models import ResNet18CIFAR10
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="CIFAR-10 GoogLeNet API")
+
+app = FastAPI(title="CIFAR-10 Resnet18 API")
+
+# Allow CORS for frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8501"],  # You can set your Streamlit URL
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load model once on startup
-model_instance = GoogleNet()
+model_instance = ResNet18CIFAR10()
 model = model_instance.model
 class_names = model_instance.class_names
 
@@ -27,4 +37,13 @@ async def predict_endpoint(file: UploadFile = File(...)):
     return {
         "class_name": result["class"],
         "confidence": result["confidence"]
+    }
+
+@app.get("/status")
+async def status():
+    """Check if model is loaded"""
+    return {
+        "model_loaded": model is not None,
+        "model_type": "ResNet18",
+        "num_classes": len(class_names)
     }
