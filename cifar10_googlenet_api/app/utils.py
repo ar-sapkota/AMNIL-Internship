@@ -1,20 +1,13 @@
-# utils.py contains small helper functions to make fastapi app clean. 
-# read uploaded image from fastapi requests
-# converts into PIL images, and passed to predict()
-
+# app/utils.py
+from io import BytesIO
 from PIL import Image
 from fastapi import UploadFile
 
-def read_image(file: UploadFile) -> Image.Image:
-    '''
-    reads an uploaded fastapi file and converts into pil image
-
-    args: 
-        file(UploadFile): file uploaded via fastapi
+async def read_image(file: UploadFile) -> Image.Image:
+    """
+    Reads the uploaded file asynchronously and returns a PIL Image in RGB format.
+    """
+    contents = await file.read()  # raw bytes of the uploaded file
+    image = Image.open(BytesIO(contents)).convert("RGB")  # convert to RGB
     
-    returns:
-        PIL.Image.Image: RGB image
-    '''
-
-    image = Image.open(file.file).convert("RGB")
     return image
