@@ -9,7 +9,7 @@ import io
 API_URL = "http://localhost:8001/predict"  # FastAPI backend URL
 
 st.set_page_config(page_title="CIFAR-10 Image Classifier", layout="centered")
-st.title("📦 CIFAR-10 ResNet Image Classifier")
+st.title(" CIFAR-10 ResNet Image Classifier")
 
 st.markdown(
     """

@@ -5,9 +5,10 @@ from app.predict import predict
 from app.schemas import PredictionResponse
 from app.models import ResNet18CIFAR10
 from fastapi.middleware.cors import CORSMiddleware
+from app.benchmark import FastAPIBenchmark
 
 
-app = FastAPI(title="CIFAR-10 Resnet18 API")
+app = FastAPI(title="CIFAR-10 Resnet18")
 
 # Allow CORS for frontend
 app.add_middleware(
@@ -21,6 +22,13 @@ app.add_middleware(
 model_instance = ResNet18CIFAR10()
 model = model_instance.model
 class_names = model_instance.class_names
+
+
+benchmark = FastAPIBenchmark(
+    base_url="http://localhost:8001",
+    images_folder="benchmark_images"
+)
+
 
 @app.post("/predict", response_model=PredictionResponse)
 async def predict_endpoint(file: UploadFile = File(...)):
@@ -47,3 +55,11 @@ async def status():
         "model_type": "ResNet18",
         "num_classes": len(class_names)
     }
+
+@app.get("/benchmark-report")
+def benchmark_report():
+    """
+    Runs benchmark tests and returns JSON results.
+    """
+    result = benchmark.run_all()
+    return {"benchmark_result": result}
