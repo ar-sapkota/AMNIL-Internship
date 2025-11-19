@@ -3,10 +3,10 @@ import requests
 from PIL import Image
 import io
 
-# -----------------------------
+
 # Configuration
-# -----------------------------
-API_URL = "http://localhost:8001/predict"  # FastAPI backend URL
+
+API_URL = "http://fastapi:8001/predict"  # FastAPI backend URL
 
 st.set_page_config(page_title="CIFAR-10 Image Classifier", layout="centered")
 st.title(" CIFAR-10 ResNet Image Classifier")
@@ -17,9 +17,9 @@ Upload an image and the model will predict which CIFAR-10 class it belongs to.
 """
 )
 
-# -----------------------------
+
 # Upload image
-# -----------------------------
+
 uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
@@ -32,9 +32,9 @@ if uploaded_file is not None:
     image.save(buf, format="JPEG")
     byte_im = buf.getvalue()
 
-    # -----------------------------
+  
     # Send image to FastAPI
-    # -----------------------------
+ 
     if st.button("Predict"):
         with st.spinner("Predicting..."):
             files = {"file": ("image.jpg", byte_im, "image/jpeg")}

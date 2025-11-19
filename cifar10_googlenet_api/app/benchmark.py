@@ -7,7 +7,7 @@ import requests
 
 class FastAPIBenchmark:
     def __init__(self, base_url: str, images_folder: str = "benchmark_images"):
-        # Resolve folder relative to THIS FILE
+        # Resolve folder relative to this file
         script_dir = os.path.dirname(os.path.abspath(__file__))
         self.images_folder = os.path.join(script_dir, images_folder)
 
