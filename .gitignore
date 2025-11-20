@@ -1,0 +1,4 @@
+myenv/
+app/data/
+*.tar.gz
+cifar-10-batches-py/
