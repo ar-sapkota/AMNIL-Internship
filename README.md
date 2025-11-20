@@ -4,4 +4,4 @@
 * benchmark images inside app used for benchmarking.
 * necessary enviroments and dependencies are Containerized in Docker.
 
-* Please find /app and go through all scripts 
+* Please find /cifar10_googlenet_api/app and go through all scripts 
