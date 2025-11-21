@@ -1,4 +1,8 @@
 # BERT Sentiment Classification
+
+### Used Two datasets and merged into one.
+**size of dataset: 42k approx**
+**demoji used to handle emojis**
 This repository contains a Nepali sentiment classification project using a BERT-based ONNX model, served via FastAPI and optionally visualized with Streamlit. The ONNX model is automatically downloaded from Hugging Face if it is not already present.
 
 ## Project Structure
