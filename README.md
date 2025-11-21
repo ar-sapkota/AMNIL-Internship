@@ -19,9 +19,19 @@ This repository contains a Nepali sentiment classification project using a BERT-
 ### Quick Start (No Docker)
 
 
-```bash
+```bas
+
 git clone https://github.com/ar-sapkota/AMNIL-Internship.git
 cd AMNIL-Internship
+
+# Create a virtual environment (recommended)
+python -m venv myenv
+
+# Activate the virtual environment
+# On Windows:
+myenv\Scripts\activate
+# On Linux/Mac:
+source myenv/bin/activate
 
 # Install dependencies recommendd to create virtual env
 pip install --upgrade pip
