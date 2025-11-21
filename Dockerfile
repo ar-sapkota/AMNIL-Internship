@@ -25,4 +25,4 @@ ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_SERVER_ENABLECORS=false
 
 # ---------- Run FastAPI + Streamlit with startup message ----------
-CMD bash -c "echo ' FastAPI: http://localhost:8000'; echo '🖥 Streamlit: http://localhost:8501'; uvicorn app.main:app --host 0.0.0.0 --port 8000 & streamlit run app/streamlit_app.py --server.port 8501"
+CMD bash -c "echo ' FastAPI: http://localhost:8000'; echo '🖥 Streamlit: http://localhost:8501'; uvicorn app.main:app --host 0.0.0.0 --port 8000 & streamlit run streamlit_app.py --server.port 8501"
