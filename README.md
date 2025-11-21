@@ -17,6 +17,7 @@ This repository contains a Nepali sentiment classification project using a BERT-
 ---
 
 ### Quick Start (No Docker)
+### Create virtual env
 
 
 ```bas
