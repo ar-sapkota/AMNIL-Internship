@@ -1,3 +1,14 @@
+# ────────────────────────────────
+# requirements.txt → 60-second install on any laptop (no GPU)
+# ────────────────────────────────
+--extra-index-url https://download.pytorch.org/whl/cpu
+--find-links https://download.pytorch.org/whl/cpu
+
+torch==2.9.1+cpu
+torchvision==0.19.1+cpu
+torchaudio==2.9.1+cpu
+
+#  existing packages 
 altair==5.5.0
 annotated-doc==0.0.4
 annotated-types==0.7.0
@@ -62,7 +73,6 @@ tenacity==9.1.2
 threadpoolctl==3.6.0
 tokenizers==0.22.1
 toml==0.10.2
-torch==2.9.1
 tornado==6.5.2
 tqdm==4.67.1
 transformers==4.57.1

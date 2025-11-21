@@ -1,0 +1,27 @@
+# .dockerignore
+__pycache__
+*.pyc
+.git
+.gitignore
+*.log
+*.pth
+*.bin
+*.onnx
+*.pkl
+*.h5
+*.pt
+*.ckpt
+*.zip
+*.tar.gz
+*.csv
+*.jsonl
+data/
+datasets/
+models/
+output/
+wandb/
+mlruns/
+*.mp4
+*.jpg
+*.png
+node_modules/
