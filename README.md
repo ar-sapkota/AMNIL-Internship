@@ -23,6 +23,7 @@ This repository contains a Nepali sentiment classification project using a BERT-
 
 git clone https://github.com/ar-sapkota/AMNIL-Internship.git
 cd AMNIL-Internship
+git checkout bert-sentiment-classification
 
 # Create a virtual environment (recommended)
 python -m venv myenv
