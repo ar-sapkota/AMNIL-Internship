@@ -23,6 +23,9 @@ scikit-learn
 # Utilities
 numpy
 pandas
+torch
+torchvision
+
 
 # Pydantic (for schemas)
 pydantic==2.12.4
