@@ -56,8 +56,6 @@ streamlit run streamlit_app.py
 ```
 
 ## Docker
- 
-### Quick Start (No Docker)
 **clone repo**
 **goto the repo-folder**
 
