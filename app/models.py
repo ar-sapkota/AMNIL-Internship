@@ -1,24 +1,25 @@
 # app/models.py
+import os
+from typing import Any, Dict
+
 import numpy as np
 import pandas as pd
 from transformers import AutoTokenizer
 import onnxruntime as ort
-from typing import Any, Dict, List
 from sklearn.metrics import accuracy_score, f1_score
-
-import os
 from huggingface_hub import hf_hub_download
 
-MODEL_PATH = "./app/models/nepali-sentiment-bert.onnx"
+# ONNX model path
+MODEL_PATH = "./models/nepali-sentiment-bert.onnx"
+TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert"
 
+# Download ONNX from Hugging Face if not exists locally
 if not os.path.exists(MODEL_PATH):
-    # Download from HF Hub
     MODEL_PATH = hf_hub_download(
         repo_id="arsapkota/nepali-sentiment-bert",
         filename="nepali-sentiment-bert.onnx",
         cache_dir="./app/models"
     )
-
 
 class modifiedNepaliBert:
     def __init__(self, onnx_model_path: str, tokenizer_name: str):
@@ -28,29 +29,29 @@ class modifiedNepaliBert:
         # Load tokenizer
         self.tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_name)
 
-        # Load ONNX session
+        # Load ONNX inference session
         self.session = ort.InferenceSession(self.onnx_model_path)
-
-        # ONNX input names
         self.input_names = [i.name for i in self.session.get_inputs()]
 
         # Label mapping
         self.id2label = {0: "Negative", 1: "Neutral", 2: "Positive"}
         self.label2id = {v: k for k, v in self.id2label.items()}
 
-        # Track inference times (optional)
+        # Optional: track inference times
         self.inference_times = []
 
     def predict(self, text: str) -> Dict[str, Any]:
         # Tokenize
-        inputs = self.tokenizer(text, return_tensors="np", padding=True, truncation=True, max_length=128)
+        inputs = self.tokenizer(
+            text, return_tensors="np", padding=True, truncation=True, max_length=128
+        )
         ort_inputs = {k: v for k, v in inputs.items() if k in self.input_names}
 
         # Run inference
         outputs = self.session.run(None, ort_inputs)
         logits = outputs[0]
 
-        # Probabilities
+        # Compute probabilities
         exp_logits = np.exp(logits)
         probs = exp_logits / exp_logits.sum(axis=1, keepdims=True)
         sentiment_id = int(logits.argmax(axis=1)[0])
@@ -64,8 +65,8 @@ class modifiedNepaliBert:
 
     def evaluate_model(self, dataset_path: str) -> Dict[str, float]:
         """
-        Evaluate ONNX model on a dataset CSV/JSON file.
-        Expected columns: 'text' and 'labels' (or 'label')
+        Evaluate ONNX model on a CSV or JSON dataset.
+        Dataset must have columns: 'text' and 'labels' (or 'label').
         """
         # Load dataset
         if dataset_path.endswith(".csv"):
@@ -75,6 +76,7 @@ class modifiedNepaliBert:
         else:
             raise ValueError("Only CSV or JSON files are supported")
 
+        # Extract labels
         if "labels" in df.columns:
             labels = df["labels"].tolist()
         elif "label" in df.columns:
@@ -88,10 +90,7 @@ class modifiedNepaliBert:
         texts = df["text"].astype(str).tolist()
 
         # Predict in batch
-        preds = []
-        for text in texts:
-            pred = self.predict(text)
-            preds.append(self.label2id[pred["label"]])
+        preds = [self.label2id[self.predict(t)["label"]] for t in texts]
 
         # Compute metrics
         accuracy = accuracy_score(labels, preds)
