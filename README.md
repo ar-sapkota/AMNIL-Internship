@@ -51,5 +51,5 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 # In another terminal → Run Streamlit UI
-streamlit run app/streamlit_app.py
+streamlit run streamlit_app.py
 
