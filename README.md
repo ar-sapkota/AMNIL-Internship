@@ -52,4 +52,26 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 # In another terminal → Run Streamlit UI
 streamlit run streamlit_app.py
+```
 
+## Docker
+ 
+### Quick Start (No Docker)
+**clone repo**
+**goto the repo-folder**
+
+``` bas
+
+# Build and run containers
+docker compose up --build
+
+```
+
+- **Streamlit UI:** [http://localhost:8501](http://localhost:8501)  
+- **FastAPI docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+
+```
+# To stop services
+docker compose down
+
+```
