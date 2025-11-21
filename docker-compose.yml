@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   fastapi:
@@ -18,3 +18,5 @@ services:
     volumes:
       - .:/app
     container_name: nepali-streamlit
+    depends_on:
+      - fastapi
