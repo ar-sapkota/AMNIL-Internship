@@ -39,6 +39,10 @@ source myenv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+#If you encounter conflicts with torch/torchvision, use the official CPU install
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+
 # Run FastAPI backend
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
