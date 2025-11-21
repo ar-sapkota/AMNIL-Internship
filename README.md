@@ -6,15 +6,16 @@
 This repository contains a Nepali sentiment classification project using a BERT-based ONNX model, served via FastAPI and optionally visualized with Streamlit. The ONNX model is automatically downloaded from Hugging Face if it is not already present.
 
 ## Project Structure
-.
-├── app/
-│ ├── main.py # FastAPI app
-│ ├── models.py # ONNX model loading & prediction
-│ ├── schemas.py # Pydantic schemas
-│ ├── streamlit_app.py # Streamlit UI
-│ └── models/ # ONNX model will be downloaded here automatically
-├── requirements.txt
-└── .gitignore
+📁 bert_sentiment_classification
+├─ 📁 app
+│  ├─ main.py
+│  ├─ models.py
+│  └─ ...
+├─ 📁 models
+│  └─ nepali-sentiment-bert.onnx
+├─ streamlit_app.py
+├─ Dockerfile
+└─ README.md
 
 
 
