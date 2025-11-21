@@ -3,7 +3,8 @@ import streamlit as st
 import requests
 
 # --- Config ---
-API_URL = "http://127.0.0.1:8000"  # your FastAPI URL
+API_URL = "http://nepali-fastapi:8000"
+  # your FastAPI URL
 
 st.set_page_config(page_title="NepaliBERT Sentiment Classification", layout="centered")
 st.title("NepaliBERT Sentiment Classification")

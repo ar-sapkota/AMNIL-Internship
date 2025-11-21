@@ -9,6 +9,11 @@ import onnxruntime as ort
 from sklearn.metrics import accuracy_score, f1_score
 from huggingface_hub import hf_hub_download
 
+
+# ---------- Ensure models folder exists ----------
+MODEL_DIR = "./models"
+os.makedirs(MODEL_DIR, exist_ok=True)
+
 # ONNX model path
 MODEL_PATH = "./models/nepali-sentiment-bert.onnx"
 TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert"
@@ -18,7 +23,7 @@ if not os.path.exists(MODEL_PATH):
     MODEL_PATH = hf_hub_download(
         repo_id="arsapkota/nepali-sentiment-bert",
         filename="nepali-sentiment-bert.onnx",
-        cache_dir="./app/models"
+        cache_dir=MODEL_DIR
     )
 
 class modifiedNepaliBert:
