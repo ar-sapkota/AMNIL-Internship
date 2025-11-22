@@ -32,6 +32,11 @@ cd AMNIL-Internship
 git checkout bert-sentiment-classification
 git lfs pull
 
+# OR (to fasten the speed)
+git lfs fetch --all
+
+
+
 # Create a virtual environment (recommended)
 python -m venv myenv
 
