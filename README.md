@@ -34,7 +34,8 @@ git lfs pull
 
 # OR (to fasten the speed)
 git lfs fetch --all
-
+git lfs fetch --include="model.onnx"
+git lfs checkout model.onnx
 
 
 # Create a virtual environment (recommended)
