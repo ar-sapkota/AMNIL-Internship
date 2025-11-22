@@ -45,10 +45,21 @@ class modifiedNepaliBert:
         # Optional: track inference times
         self.inference_times = []
 
+    def _normalize_text(self, text: str) -> str:
+        """
+        CRITICAL: Must match training preprocessing exactly
+        """
+        text = text.strip()
+        text = text.replace("\n", " ")
+        text = " ".join(text.split())
+        return text
+
     def predict(self, text: str) -> Dict[str, Any]:
+
+        text = self._normalize_text(text)
         # Tokenize
         inputs = self.tokenizer(
-            text, return_tensors="np", padding=True, truncation=True, max_length=128
+            text, return_tensors="np", padding=True, truncation=True, max_length=256
         )
         ort_inputs = {k: v for k, v in inputs.items() if k in self.input_names}
 
