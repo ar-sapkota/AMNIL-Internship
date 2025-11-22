@@ -33,7 +33,8 @@ git checkout bert-sentiment-classification
 git lfs pull
 
 # OR (to fasten the speed)
-git lfs fetch --all
+this doesn't work for now<!-- git lfs fetch --all -->
+# run for model.onnx
 git lfs fetch --include="model.onnx"
 git lfs checkout model.onnx
 
