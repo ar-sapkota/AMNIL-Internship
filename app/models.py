@@ -15,14 +15,14 @@ MODEL_DIR = "./models"
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 # ONNX model path
-MODEL_PATH = "./models/nepali-sentiment-bert.onnx"
-TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert"
+MODEL_PATH = "./models/model.onnx"
+TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert-regu"
 
 # Download ONNX from Hugging Face if not exists locally
 if not os.path.exists(MODEL_PATH):
     MODEL_PATH = hf_hub_download(
-        repo_id="arsapkota/nepali-sentiment-bert",
-        filename="nepali-sentiment-bert.onnx",
+        repo_id="arsapkota/nepali-sentiment-bert-regu",
+        filename="model.onnx",
         cache_dir=MODEL_DIR
     )
 
