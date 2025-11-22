@@ -13,7 +13,7 @@ venv/
 .ipynb_checkpoints/
 
 # Data / Models (exclude ONNX)
-*.onnx
+# *.onnx
 *.h5
 *.pt
 *.bin

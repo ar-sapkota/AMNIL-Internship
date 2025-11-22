@@ -3,7 +3,7 @@
 ### Used Two datasets and merged into one.
 **size of dataset: 42k approx**
 **demoji used to handle emojis**
-This repository contains a Nepali sentiment classification project using a BERT-based ONNX model, served via FastAPI and optionally visualized with Streamlit. The ONNX model is automatically downloaded from Hugging Face if it is not already present.
+This repository contains a Nepali sentiment classification project using a BERT-based ONNX model, served via FastAPI and optionally visualized with Streamlit. 
 
 ## Project Structure
 📁 bert_sentiment_classification
@@ -18,7 +18,7 @@ This repository contains a Nepali sentiment classification project using a BERT-
 └─ README.md
 
 
-
+**If the file is missing(.onnx), please download manually from**[https://huggingface.co/arsapkota/nepali-sentiment-bert/tree/main]
 ---
 
 ### Quick Start (No Docker)
@@ -30,6 +30,7 @@ This repository contains a Nepali sentiment classification project using a BERT-
 git clone https://github.com/ar-sapkota/AMNIL-Internship.git
 cd AMNIL-Internship
 git checkout bert-sentiment-classification
+git lfs pull
 
 # Create a virtual environment (recommended)
 python -m venv myenv
