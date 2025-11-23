@@ -32,8 +32,8 @@ app.add_middleware(
 )
 
 # --- Initialize model ---
-MODEL_PATH = "./models/model.onnx"
-TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert-regu"
+MODEL_PATH = "./models/model2.o.onnx"
+TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert-regu2.o"
 model = None
 
 @app.on_event("startup")

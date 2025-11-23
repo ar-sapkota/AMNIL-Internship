@@ -15,8 +15,8 @@ MODEL_DIR = "./models"
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 # ONNX model path
-MODEL_PATH = "./models/model.onnx"
-TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert-regu"
+MODEL_PATH = "./models/model2.o.onnx"
+TOKENIZER_NAME = "arsapkota/nepali-sentiment-bert-regu2.o"
 
 # Download ONNX from Hugging Face if not exists locally
 if not os.path.exists(MODEL_PATH):
