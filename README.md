@@ -34,10 +34,12 @@ git lfs pull
 
 # OR (to fasten the speed)
 this doesn't work for now<!-- git lfs fetch --all -->
-# run for model.onnx
-git lfs fetch --include="model.onnx"
-git lfs checkout model.onnx
+<!-- git lfs fetch --include="model2.o.onnx"
+git lfs checkout model.onnx -->
 
+# run for model2.o.onnx
+git lfs fetch --include="model2.o.onnx"
+git lfs checkout model2.o.onnx
 
 # Create a virtual environment (recommended)
 python -m venv myenv
